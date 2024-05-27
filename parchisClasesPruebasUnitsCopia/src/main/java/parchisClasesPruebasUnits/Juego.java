@@ -14,38 +14,72 @@ public class Juego {
 	public static void main(String[] args) {
 		
 		Tablero tablero = new Tablero();
-		Dado dado1 = new Dado();
-		Jugador yo = new Jugador("Angel", tablero);
+		Usuario jug1 = new Usuario();
+		Usuario jug2 = new Usuario();
+		Boolean partidaGanada = false;
 		
-		do {
-
-			yo.tirarDado(dado1);
-			System.out.println("Ha salido el " + yo.consultarDado(dado1));
-
-		} while (yo.consultarDado(dado1) != 5);
-
-		yo.moverFicha(1);
-		System.out.println("La ficha sale de casa");
+		logearUsuarios(2);
+		elegirColor(jug1);
+		elegirColor(jug2);
 		
-		Dado dado2 = new Dado();
-		
-		int tirada;
-		do {
-
-			yo.tirarDado(dado1);
-			yo.tirarDado(dado2);
+		while(!partidaGanada) {
 			
-			tirada = yo.consultarDado(dado1)+yo.consultarDado(dado2);
-			
-			System.out.println("Ha salido el " + tirada);		
-			yo.moverFicha(tirada);
-			
-			System.out.println("La ficha esta en la casilla "+yo.consultarTablero());
-
-		} while (yo.consultarTablero() < tablero.consultarNumCasillas());
-
-		System.out.println("Fin del juego");
-
+			turno(jug1);
+			turno(jug2);
+		}
 	}
-
+	
+	private static void logearUsuarios(int numUsuarios) {
+		for(int i=1; i<=numUsuarios;i++) {
+			// hay que hacer el metodo del login para despues llamar al login de la clase usuario.
+			// Por ejemplo jug1.login("Angel", "123");
+		}
+	}
+	
+	private static void elegirColor(Usuario usuario) {
+		
+		// preguntamos a los usuarios que color quieren y se lo asignamos a las fichas dentro de su array.
+	}
+	
+	
+	private static void turno(Usuario usuario) {
+		
+		int tirada = usuario.getDado().tirar();
+		if(todasEnCasa(usuario) && tirada != 5) {
+			return;
+		}
+		else if (!todasEnCasa(usuario) || tirada == 5) {
+			int fichaElejida = elegirFicha();
+			moverFicha(usuario, fichaElejida, tirada);
+		}
+		
+	}
+	
+	private static boolean todasEnCasa(Usuario usuario) {
+		boolean resultado = true;
+		for(int i = 0; i<usuario.getFichas().length;i++) {
+			if(usuario.getFichas()[i].getCasilla() != 0) {
+				resultado = false;
+			}
+		}
+		return resultado;
+	}
+	
+	private static int elegirFicha() {
+		
+		// preguntamos al usuario que escriba la casilla de la ficha que quiere mover.
+		// se obtiene en la variable fichaElejida.
+		return 1;
+		
+	}
+		
+	private static void moverFicha(Usuario usuario, int fichaElejida, int tirada) {
+		
+		usuario.getFichas()[fichaElejida].setCasilla(tirada);
+		// ahora deberiamnos de controlar si al mover hay una barrera de fichas de color diferente.
+		// Tambien hay que controlar si come alguna ficha.
+		// Tambien hay que controlar si ha llegado al final y ha ganado la partida.
+		// Y cualquier otra cosa que se me escape.
+	}
+	
 }

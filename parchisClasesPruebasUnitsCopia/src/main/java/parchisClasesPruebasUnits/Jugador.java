@@ -11,6 +11,15 @@ public class Jugador {
 	private String nombre;
 	private Tablero tablero;
 	
+	
+	public Jugador() {
+		
+		this.nombre = "";
+		this.tablero = new Tablero();
+		
+	}
+	
+	
 	public Jugador(String nombre, Tablero tablero) {
 		
 		this.nombre = nombre;
@@ -24,13 +33,8 @@ public class Jugador {
 		
 	}
 	
-	public int consultarDado(Dado d) {
-		
-		return d.mostrarTirada();
-		
-	}
 	
-	public int consultarTablero() { 
+	public int consultarTablero() {
 		
 		boolean[] casillas = tablero.consultarCasillas();
 		
