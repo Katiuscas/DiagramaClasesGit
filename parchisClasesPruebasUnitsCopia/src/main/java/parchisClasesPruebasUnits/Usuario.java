@@ -86,5 +86,8 @@ public class Usuario extends Jugador{
 	public void pruebaGit2(){
 		//prueba final
 	}
+	public void pruebaFinal() {
+		// ultima
+	}
 
 }
