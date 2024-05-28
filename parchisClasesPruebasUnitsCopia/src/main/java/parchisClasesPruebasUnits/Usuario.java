@@ -81,6 +81,10 @@ public class Usuario extends Jugador{
 		// prueba 2
 		//prueba 3
 		//prueba 4
+		//prueba 5 para pull
+	}
+	public void pruebaGit2(){
+		//prueba final
 	}
 
 }
