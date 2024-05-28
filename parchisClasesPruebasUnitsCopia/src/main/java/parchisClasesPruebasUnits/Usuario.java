@@ -79,6 +79,7 @@ public class Usuario extends Jugador{
 	public void pruebaGit() {
 		// es para probar el git
 		// prueba 2
+		//prueba 3
 	}
 
 }
