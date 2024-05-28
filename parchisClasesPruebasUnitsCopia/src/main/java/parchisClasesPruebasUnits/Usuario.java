@@ -80,6 +80,7 @@ public class Usuario extends Jugador{
 		// es para probar el git
 		// prueba 2
 		//prueba 3
+		//prueba 4
 	}
 
 }
